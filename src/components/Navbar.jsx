@@ -54,7 +54,7 @@ const Navbar = () => {
 
     ]
     return (
-        <div className='bg-gradient-to-r from-[#0F172A] to-[#1E40AF] px-1 md:px-10 lg:px-20 w-11/12 mx-auto rounded-xl my-5'>
+        <div className='bg-gradient-to-r from-[#0F172A] to-[#112565] px-1 md:px-10 lg:px-20 w-11/12 mx-auto rounded-xl my-5'>
             <div className="navbar  ">
                 <div className="navbar-start">
                     <div className="dropdown">
