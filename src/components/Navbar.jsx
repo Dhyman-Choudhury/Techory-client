@@ -3,7 +3,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 import logo from '../assets/logo.png'
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthProvider';
-import { useContext } from 'react';
+
 
 
 const Navbar = () => {

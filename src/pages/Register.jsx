@@ -1,11 +1,12 @@
-import React, { use, useEffect, useState } from 'react';
+import React, {  useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthProvider';
 
+
 const Register = () => {
-    const { register, setUser, updateUser } = use(AuthContext)
+    const {setUser, updateUser } = useContext(AuthContext)
     const [show, setShow] = useState(false)
     const navigate = useNavigate();
 
@@ -33,7 +34,7 @@ const Register = () => {
             toast.warn('Password must be contain at least one uppercase letter.')
             return
         }
-        register(email, password)
+        signUp(email, password)
             .then(result => {
                 // console.log(result)
                 const user = result.user;
