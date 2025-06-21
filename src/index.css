@@ -4,5 +4,9 @@
 
 :root {
   --color-primary: #086d65;
-  --color-secondary: #0F172A;
+  --color-secondary: #234652;
+}
+.active{
+  background-color:#60A5FA  ; 
+  color: white ; 
 }

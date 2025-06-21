@@ -6,7 +6,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 
 const Register = () => {
-    const {setUser, updateUser } = useContext(AuthContext)
+    const { signUp, setUser, updateUser } = useContext(AuthContext)
     const [show, setShow] = useState(false)
     const navigate = useNavigate();
 
@@ -33,6 +33,10 @@ const Register = () => {
         if (!/[A-Z]/.test(password)) {
             toast.warn('Password must be contain at least one uppercase letter.')
             return
+        }
+          if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+           toast.warn('Password must contain at least one special character.');
+            return;
         }
         signUp(email, password)
             .then(result => {
@@ -61,7 +65,7 @@ const Register = () => {
     }
    
     return (
-        <div className='flex justify-center min-h-screen items-center bg-gradient-to-br from-[#8fad80] via-[#5c9673] to-[#65ad69]'>
+        <div className='w-11/12 mx-auto flex justify-center min-h-screen items-center bg-secondary mb-5'>
             <ToastContainer />
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
                 <h2 className='font-semibold text-3xl text-center'>Register your account</h2>

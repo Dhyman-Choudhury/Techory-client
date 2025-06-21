@@ -3,11 +3,12 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 import logo from '../assets/logo.png'
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthProvider';
+import { use } from 'react';
 
 
 
 const Navbar = () => {
-    // const { user, logout } = useContext(AuthContext);
+     const { user, logout } = use(AuthContext);
     const navigate = useNavigate();
     const location = useLocation()
 
@@ -84,14 +85,14 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end space-x-0  lg:space-x-2 relative">
                     <div className='lg:hidden'>
-                        {/* {user && (
+                        {user && (
                             <img
                                 className="w-14 h-14 object-cover rounded-full"
                                 src={user.photoURL}
                                 alt=''
                                 title={user.displayName}
                             />
-                        )} */}
+                        )}
                     </div>
                     <div className="dropdown lg:hidden">
                         <div tabIndex={0} role="" className="lg:hidden">
@@ -105,38 +106,38 @@ const Navbar = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 shadow">
 
-                            {/* <li>
+                            <li>
                                 {
                                     user ? <button onClick={handleLogout} className="btn rounded-full btn-primary text-white">Logout</button> : <><button onClick={() => navigate('/auth/login')} className="btn rounded-full btn-primary text-white">Login</button> <button onClick={() => navigate('/auth/register')} className="btn rounded-full btn-primary mt-1 text-white">Register</button></>
                                 }
-                            </li> */}
+                            </li>
 
                         </ul>
                     </div>
 
 
                     <div className='hidden lg:flex items-center gap-2'>
-                        {/* <div className=''>
+                        <div className=''>
                             {
-                                user ? <div className='text-black font-semibold'>{user.email}</div> : ''
+                                user ? <div className='text-gray-200 font-semibold'>{user.email}</div> : ''
                             }
-                        </div> */}
-                        {/* {user && (
+                        </div>
+                        {user && (
                             <img
                                 className="w-16 h-16 object-cover rounded-full"
                                 src={user.photoURL}
                                 alt=''
                                 title={user.displayName}
                             />
-                        )} */}
+                        )}
 
-                        {/* {
+                        {
                             user ? <button onClick={handleLogout} className="btn rounded-full btn-primary text-white">Logout</button> : <><button onClick={() => navigate('/auth/login')} className="btn rounded-full btn-primary text-white">Login</button> <button onClick={() => navigate('/auth/register')} className="btn rounded-full btn-primary text-white">Register</button></>
-                        } */}
+                        }
 
                         {/* <button onClick={() => navigate('/auth/login')} className="btn rounded-full btn-primary text-white">Login</button>  */}
                         {/* <button onClick={handleLogout} className="btn rounded-full btn-primary text-white">Register</button> */}
-                        <><button onClick={() => navigate('/auth/login')} className="btn rounded-full btn-primary text-white">Login</button> <button onClick={() => navigate('/auth/register')} className="btn rounded-full btn-primary text-white">Register</button></>
+                        {/* <><button onClick={() => navigate('/auth/login')} className="btn rounded-full btn-primary text-white">Login</button> <button onClick={() => navigate('/auth/register')} className="btn rounded-full btn-primary text-white">Register</button></> */}
                     </div>
                     
                 </div>

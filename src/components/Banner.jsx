@@ -7,15 +7,16 @@ import image2 from '../assets/images/ai-2.jpg'
 const Banner = () => {
     return (
        <div className='hero w-11/12  mx-auto min-h-96 '>
-         <div className='hero-content w-full flex flex-col lg:flex-row-reverse gap-10' style={{
+        <div className='pb-5 w-full flex flex-col lg:flex-row-reverse gap-10' 
+          style={{
                 backgroundImage: `url(${banner})`,
                 backgroundSize: 'cover',
                backgroundRepeat:'no-repeat',
                 backgroundPosition: 'center',
-                height:'100%',
-                opacity:'0.8',
+                height: '100%',
+                opacity: '0.8',
                 width: '100%'
-            }}>
+          }}>
             
 
         <div className='flex-1'>
@@ -34,23 +35,23 @@ const Banner = () => {
           />
           
         </div>
-        <div className='flex-1'>
+        <div className='flex-1 text-center flex justify-center items-center'>
            <motion.h1 
              initial={{ scale: 0}}
              animate={{ scale: 1, transition: { duration: 4}}}
-             className='text-5xl font-bold text-gray-200'
+             className='text-5xl font-bold text-base-100'
            >
-            Wre are in revolutionary era where <motion.span
+            We are in revolutionary <br /> era where <motion.span
               animate={
               {
                 color: ['#ff5733', '#33ff33', '#8a33ff'],
                 transition: {duration: 2, repeat: Infinity}
               }}
-             >AI</motion.span> changes how we search! </motion.h1>
+             >AI</motion.span> changes <br /> how we search! </motion.h1>
         </div>
         </div>
        </div>
-    );
+   );
 };
 
 export default Banner;
