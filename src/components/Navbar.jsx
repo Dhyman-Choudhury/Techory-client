@@ -136,7 +136,7 @@ const Navbar = () => {
 
                         {/* <button onClick={() => navigate('/auth/login')} className="btn rounded-full btn-primary text-white">Login</button>  */}
                         {/* <button onClick={handleLogout} className="btn rounded-full btn-primary text-white">Register</button> */}
-
+                        <><button onClick={() => navigate('/auth/login')} className="btn rounded-full btn-primary text-white">Login</button> <button onClick={() => navigate('/auth/register')} className="btn rounded-full btn-primary text-white">Register</button></>
                     </div>
                     
                 </div>
