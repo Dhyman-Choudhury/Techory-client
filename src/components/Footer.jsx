@@ -38,7 +38,7 @@ const Footer = () => {
 
   ]
   return (
-    <footer className="bg-gradient-to-r from-[#0F172A] via-[#0a2043] to-[#020351cb]  text-white py-10 ">
+    <footer className="bg-gradient-to-r from-[#0F172A] via-[#0a2043] to-[#030439cb]  text-white py-10 ">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-5">
 
         {/* Company Info */}

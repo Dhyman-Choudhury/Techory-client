@@ -13,7 +13,7 @@ const Navbar = () => {
     const location = useLocation()
 
     const handleNavigate = () => {
-        navigate('/addPlants')
+        navigate('/addBlog')
     }
 
     const handleLogout = () => {
@@ -29,19 +29,19 @@ const Navbar = () => {
     }
 
     const links = [
-        <li><NavLink className="text-bold text-gray-300" to='/'>Home</NavLink></li>,
-        <li><NavLink className="text-bold text-gray-300" to='/featuredBlog'>Featured</NavLink></li>,
-        <li><NavLink className="text-bold text-gray-300" to='/allBlogs'>All Blogs</NavLink></li>,
-        // <li>
-        //     {user && (
-        //         <button
-        //             onClick={handleNavigate}
-        //             className={`${location.pathname === '/addBlog' ? 'bg-[#e55039] text-white' : ''}`}
-        //         >
-        //             Add Blog
-        //         </button>
-        //     )}
-        // </li>,
+        <li><NavLink className="text-bold text-base-100" to='/'>Home</NavLink></li>,
+        <li><NavLink className="text-bold text-base-100" to='/featuredBlog'>Featured</NavLink></li>,
+        <li><NavLink className="text-bold text-base-100" to='/allBlogs'>All Blogs</NavLink></li>,
+        <li>
+            {user && (
+                <button
+                    onClick={handleNavigate}
+                    className={`${location.pathname === '/addBlog' ? 'bg-[#60A5FA] text-white' : 'text-base-100'}`}
+                >
+                    Add Blog
+                </button>
+            )}
+        </li>,
         // <li>
         //     {user && (
         //         <button

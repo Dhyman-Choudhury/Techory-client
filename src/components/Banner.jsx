@@ -13,6 +13,7 @@ const Banner = () => {
                 backgroundSize: 'cover',
                backgroundRepeat:'no-repeat',
                 backgroundPosition: 'center',
+                borderRadius:'12px',
                 height: '100%',
                 opacity: '0.8',
                 width: '100%'
