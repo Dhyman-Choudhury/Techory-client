@@ -42,16 +42,16 @@ const Navbar = () => {
                 </button>
             )}
         </li>,
-        // <li>
-        //     {user && (
-        //         <button
-        //             onClick={() => navigate(`/myPlants/${user.email}`)}
-        //             className={` ${location.pathname.startsWith('/myPlants') ? 'bg-[#e55039] text-white' : ''}`}
-        //         >
-        //             Wishlist
-        //         </button>
-        //     )}
-        // </li>
+        <li>
+            {user && (
+                <button
+                    onClick={() => navigate(`/wishList`)}
+                    className={` ${location.pathname.startsWith('/wishList') ? 'bg-[#60A5FA] text-white' : 'text-base-100'}`}
+                >
+                    Wishlist
+                </button>
+            )}
+        </li>
 
     ]
     return (

@@ -9,6 +9,8 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import AddBlog from "../pages/AddBlog";
 import Loading from "../pages/Loading";
 import AllBlogs from "../pages/AllBlogs";
+import BlogDetails from "../pages/BlogDetails";
+import WishList from "../pages/WishList";
 
 export const router = createBrowserRouter([
   {
@@ -31,13 +33,41 @@ export const router = createBrowserRouter([
         Component: AllBlogs
       },
       {
+        path: '/blogDetails/:id',
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/blogs/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <BlogDetails></BlogDetails>
+          </PrivateRoute>
+        )
+
+      },
+      {
         path: '/addBlog',
         element: (
           <PrivateRoute>
             <AddBlog></AddBlog>
           </PrivateRoute>
         )
-
+      },
+      // {
+      //   path: '/wishList',
+      //   element: (
+      //     <PrivateRoute>
+      //       <WishList></WishList>
+      //     </PrivateRoute>
+      //   )
+      // },
+      {
+        path: '/wishList',
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/wishlist`),
+        element: (
+          <PrivateRoute>
+            <WishList></WishList>
+          </PrivateRoute>
+        )
       }
 
     ]

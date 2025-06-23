@@ -36,7 +36,7 @@ const AddPlants = () => {
         const form = e.target;
         const formData = new FormData(form);
         const blogsData = Object.fromEntries(formData.entries());
-        console.log(blogsData)
+    
 
         //     fetch('https://tree-care-server.vercel.app/plants', {
         //         method: "POST",
