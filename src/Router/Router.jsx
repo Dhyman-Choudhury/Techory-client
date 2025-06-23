@@ -60,9 +60,9 @@ export const router = createBrowserRouter([
       //   )
       // },
       {
-        path: '/wishList',
+        path: '/wishList/:email',
         hydrateFallbackElement: <Loading></Loading>,
-        loader: () => fetch(`${import.meta.env.VITE_API_URL}/wishlist`),
+        loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/wishlist/${params.email}`),
         element: (
           <PrivateRoute>
             <WishList></WishList>

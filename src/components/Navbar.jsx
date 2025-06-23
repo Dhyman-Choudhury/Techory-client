@@ -45,7 +45,7 @@ const Navbar = () => {
         <li>
             {user && (
                 <button
-                    onClick={() => navigate(`/wishList`)}
+                    onClick={() => navigate(`/wishList/${user?.email}`)}
                     className={` ${location.pathname.startsWith('/wishList') ? 'bg-[#60A5FA] text-white' : 'text-base-100'}`}
                 >
                     Wishlist

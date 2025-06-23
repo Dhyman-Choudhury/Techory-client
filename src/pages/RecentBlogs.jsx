@@ -1,63 +1,80 @@
 import axios from 'axios';
-import { Link, NavLink } from 'react-router';
+import { useContext } from 'react';
+import { Link } from 'react-router';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const RecentBlogs = ({ newBlogs }) => {
+    const { user } = useContext(AuthContext);
 
-    const handleWishList = id => {
+    const handleWishList = (id) => {
         const wishData = newBlogs.find(blog => blog._id === id);
-        console.log(wishData)
-        axios.post(`${import.meta.env.VITE_API_URL}/wishlist`, wishData)
-            .then(res => {
-                console.log(res.data)
+
+        if (!wishData || !user?.email) {
+            toast.error("Invalid data or user not logged in.");
+            return;
+        }
+
+        axios.get(`${import.meta.env.VITE_API_URL}/wishlist/${id}?email=${user.email}`)
+            .then(checkRes => {
+                if (checkRes.data?.exists) {
+                    toast.info("This blog is already in your wishlist.");
+                } else {
+                    const dataToSave = {
+                        ...wishData,
+                        blogId: id,
+                        userEmail: user.email
+                    };
+                    delete dataToSave._id;
+
+                    axios.post(`${import.meta.env.VITE_API_URL}/wishlist`, dataToSave)
+                        .then(postRes => {
+                            if (postRes.data?.insertedId) {
+                                toast.success("You’ve successfully added the blog to your wishlist.");
+                            }
+                        })
+                        .catch(() => {
+                            toast.error("Failed to add to wishlist.");
+                        });
+                }
             })
-            .catch(error => {
-                console.log(error)
-            })
-    }
-    // const [sliced, setSliced] = useState()
-    // if (!Array.isArray(newPlants)) {
-    //     return <div className="text-center mt-10 text-red-500">No plant data available or data format is invalid.</div>;
-    // }
+            .catch(() => {
+                toast.error("Failed to check wishlist.");
+            });
+    };
+
     const sortedBlogs = [...newBlogs].sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
-    const sliced = sortedBlogs.slice(0, 6)
+    const sliced = sortedBlogs.slice(0, 6);
 
     return (
-        <div >
+        <div>
             <h2 className='text-5xl font-bold text-white text-center pt-10'>Recent Blogs</h2>
             <div className='w-11/12 mx-auto py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-
                 {
                     sliced.map(event => (
-                        <div key={event._id} className="bg-[#1B2431] shadow-xl rounded-xl m-6 w-full p-5 ">
+                        <div key={event._id} className="bg-[#1B2431] shadow-xl rounded-xl m-6 w-full p-5">
                             <img
                                 src={event.photo}
                                 alt={event.title}
-                                className="w-full  object-cover rounded-xl h-[250px] shadow-2xl"
+                                className="w-full object-cover rounded-xl h-[250px] shadow-2xl"
                             />
                             <div className="p-5 space-y-3">
                                 <h2 className="text-xl font-bold text-base-100 mb-1">{event.title}</h2>
-                                <p className="text-sm text-gray-600 "><span className='font-semibold text-base-100'>Category :</span> {event.category}</p>
-                                <p className="text-sm text-gray-600"><span className='font-semibold  text-base-100'>Short Description:</span> {event.shortDescription}</p>
-                                {/* <p className="text-sm text-gray-600 mb-2"><span className='font-semibold text-green-700'>Long:</span> {event.health}</p> */}
+                                <p className="text-sm text-gray-600"><span className='font-semibold text-base-100'>Category :</span> {event.category}</p>
+                                <p className="text-sm text-gray-600"><span className='font-semibold text-base-100'>Short Description:</span> {event.shortDescription}</p>
                                 <div className='flex justify-between'>
                                     <Link to={`/blogDetails/${event._id}`}>
                                         <button className='btn btn-primary'>View Details</button>
                                     </Link>
-                                    {/* <Link to={`/wishlist/${event._id}`}>
-                                        <button className='btn btn-primary'>Whish List</button>
-                                    </Link> */}
-                                    <button onClick={() => handleWishList(event._id)} className='btn btn-primary'>Whish List</button>
+                                    <button onClick={() => handleWishList(event._id)} className='btn btn-primary'>Wishlist</button>
                                 </div>
                             </div>
-
                         </div>
                     ))
                 }
             </div>
         </div>
-
     );
 };
-
 
 export default RecentBlogs;
