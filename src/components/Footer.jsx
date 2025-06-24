@@ -7,36 +7,36 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const Footer = () => {
   const navigate = useNavigate()
-//   const { user } = use(AuthContext)
+  const { user } = use(AuthContext)
   const handleNavigate = () => {
-    navigate('/addPlants')
+    navigate('/addBlog')
   }
-  const links = [
-    <li><NavLink className="text-bold p-2 rounded-lg" to='/'>Home</NavLink></li>,
-    <li><NavLink className="text-bold p-2 rounded-lg" to='/allPlants'>All Plants</NavLink></li>,
-    // <li>
-    //   {user && (
-    //     <button
-    //       onClick={handleNavigate}
-    //       className={` ${location.pathname === '/addPlants' ? 'bg-[#e55039] text-white' : ''
-    //         }`}
-    //     >
-    //       Add Plants
-    //     </button>
-    //   )}
-    // </li>,
-    // <li>
-    //   {user && (
-    //     <button
-    //       onClick={() => navigate(`/myPlants/${user.email}`)}
-    //       className={` ${location.pathname.startsWith('/myPlants') ? 'bg-[#e55039] text-white' : ''}`}
-    //     >
-    //       My Plants
-    //     </button>
-    //   )}
-    // </li>
+   const links = [
+        <li><NavLink className="text-bold text-base-100" to='/'>Home</NavLink></li>,
+        <li><NavLink className="text-bold text-base-100" to='/featuredBlog'>Featured</NavLink></li>,
+        <li><NavLink className="text-bold text-base-100" to='/allBlogs'>All Blogs</NavLink></li>,
+        <li>
+            {user && (
+                <button
+                    onClick={handleNavigate}
+                    className={`${location.pathname === '/addBlog' ? 'bg-[#60A5FA] text-white' : 'text-base-100'}`}
+                >
+                    Add Blog
+                </button>
+            )}
+        </li>,
+        <li>
+            {user && (
+                <button
+                    onClick={() => navigate(`/wishList/${user?.email}`)}
+                    className={` ${location.pathname.startsWith('/wishList') ? 'bg-[#60A5FA] text-white' : 'text-base-100'}`}
+                >
+                    Wishlist
+                </button>
+            )}
+        </li>
 
-  ]
+    ]
   return (
     <footer className="bg-gradient-to-r from-[#0F172A] via-[#0a2043] to-[#030439cb]  text-white py-10 ">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-5">

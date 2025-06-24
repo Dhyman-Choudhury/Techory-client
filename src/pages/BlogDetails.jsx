@@ -49,6 +49,7 @@ const BlogDetails = () => {
       blogId,
       commenter_name: user?.displayName,
       commenter_email: user?.email,
+      photo:user?.photoURL,
       text,
     };
 
@@ -77,7 +78,7 @@ const BlogDetails = () => {
       <div className="my-10 w-11/12 mx-auto flex flex-col gap-5 md:flex-row lg:gap-10 bg-secondary shadow-md rounded-xl overflow-hidden p-5">
         {/* Image Section */}
         <div className="w-2/5">
-          <img src={event.photo} alt={event.title} className="rounded-xl w-full" />
+          <img src={event.photo} alt={event.title} className="rounded-xl object-cover h-full w-full" />
         </div>
 
         {/* Content Section */}

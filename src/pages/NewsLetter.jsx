@@ -32,7 +32,7 @@ const NewsLetter = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="px-4 py-2 bg-white  rounded-md w-full md:w-1/3 focus:outline-none"
+              className="px-4 py-2 bg-white  rounded-md w-full md:w-2/3 focus:outline-none"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required

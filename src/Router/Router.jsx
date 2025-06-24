@@ -11,6 +11,7 @@ import Loading from "../pages/Loading";
 import AllBlogs from "../pages/AllBlogs";
 import BlogDetails from "../pages/BlogDetails";
 import WishList from "../pages/WishList";
+import UpdateBlog from "../pages/UpdateBlog";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,16 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddBlog></AddBlog>
+          </PrivateRoute>
+        )
+      },
+      {
+        path: '/updateBlog/:id',
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/blogs/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateBlog></UpdateBlog>
           </PrivateRoute>
         )
       },

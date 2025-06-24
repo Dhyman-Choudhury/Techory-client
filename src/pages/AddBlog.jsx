@@ -6,7 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 
 
-const AddPlants = () => {
+const AddBlog = () => {
 
     useEffect(() => {
         document.title = "Add Blog | techory"
@@ -31,27 +31,11 @@ const AddPlants = () => {
         return () => clearInterval(interval); // cleanup on unmount
     }, []);
 
-    const handleAddPlants = (e) => {
+    const handleAddBlog = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const blogsData = Object.fromEntries(formData.entries());
-    
-
-        //     fetch('https://tree-care-server.vercel.app/plants', {
-        //         method: "POST",
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(plantsData)
-        //     })
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             if (data.insertedId) {
-        //                 toast.success('Plant added successfully!');
-        //                 form.reset();
-        //             }
-        //         });
 
         axios.post(`${import.meta.env.VITE_API_URL}/blogs`, blogsData)
             .then(res => {
@@ -72,7 +56,7 @@ const AddPlants = () => {
             <div className="card bg-secondary  mx-auto shadow-2xl py-5 px-10">
                 <h2 className="text-4xl font-semibold text-white text-center">Add Your Blog</h2>
                 <div className="card-body">
-                    <form onSubmit={handleAddPlants} className="fieldset">
+                    <form onSubmit={handleAddBlog} className="fieldset">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
                                 <label className="label text-white font-semibold">Photo URL</label>
@@ -136,4 +120,4 @@ const AddPlants = () => {
     );
 };
 
-export default AddPlants;
+export default AddBlog;
