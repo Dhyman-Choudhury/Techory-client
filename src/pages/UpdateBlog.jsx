@@ -1,0 +1,126 @@
+
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
+import { toast, ToastContainer } from 'react-toastify';
+import axios from 'axios';
+import { useLoaderData } from 'react-router';
+
+
+const UpdateBlog = () => {
+    const data = useLoaderData()
+
+    useEffect(() => {
+        document.title = "Update Blog | techory"
+    }, [])
+    const { user } = useContext(AuthContext);
+    const [dateTime, setDateTime] = useState("");
+
+    useEffect(() => {
+        const updateTime = () => {
+            const now = new Date();
+            const offset = now.getTimezoneOffset();
+            const localISOTime = new Date(now.getTime() - offset * 60000)
+                .toISOString()
+                .slice(0, 16);
+            setDateTime(localISOTime);
+        };
+
+        updateTime(); // initial call
+
+        const interval = setInterval(updateTime, 1000); // update every second
+
+        return () => clearInterval(interval); // cleanup on unmount
+    }, []);
+
+    const handleUpdateBlog= (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const blogsData = Object.fromEntries(formData.entries());
+
+
+        axios.put(`${import.meta.env.VITE_API_URL}/blogs/${data._id}`, blogsData)
+            .then(res => {
+                if (res?.data?.modifiedCount > 0 || res?.data?.acknowledged) {
+                    toast.success('You have updated the blog successfully!');
+                }else {
+                toast.info('No changes were made.');
+            }
+            })
+            .catch(error => {
+                 toast.warn(error.message)
+            })
+
+    };
+
+    return (
+        <div className="min-h-[calc(100vh-340px)] my-10 w-11/12 mx-auto">
+            <ToastContainer />
+            <div className="card bg-secondary  mx-auto shadow-2xl py-5 px-10">
+                <h2 className="text-4xl font-semibold text-white text-center">Add Your Blog</h2>
+                <div className="card-body">
+                    <form onSubmit={handleUpdateBlog} className="fieldset">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label className="label text-white font-semibold">Photo URL</label>
+                                <input type="text" name="photo" className="input w-full" defaultValue={data.photo} required />
+                            </div>
+
+                            <div>
+                                <label className="label text-white font-semibold">Blog Title</label>
+                                <input type="text" name="title" className="input w-full" defaultValue={data.title} required />
+                            </div>
+
+                            <div>
+                                <label className="label text-white font-semibold">Category</label>
+                                <select name="category" className="select w-full" required>
+                                    <option disabled selected value="">Pick a Category</option>
+                                    <option>AI News & Trends</option>
+                                    <option>Machine Learning</option>
+                                    <option>Deep Learning</option>
+                                    <option>AI Tools & Frameworks</option>
+                                    <option>AI Applications</option>
+                                    <option>AI Career & Learning</option>
+
+                                </select>
+                            </div>
+
+                            <div>
+                                <label className="label text-white font-semibold">Short Description</label>
+                                <input type="text" name="shortDescription" className="input w-full" defaultValue={data.shortDescription} required />
+                            </div>
+                            <div>
+                                <label className="label text-white font-semibold">Long Description</label>
+                                <input type="text" name="longDescription" className="input w-full" defaultValue={data.longDescription} required />
+                            </div>
+
+                            <div>
+                                <label className="label text-white font-semibold">User Name</label>
+                                <input type="text" name="name" value={user?.displayName || ''} readOnly className="input w-full" />
+                            </div>
+
+                            <div>
+                                <label className="label text-white font-semibold">Email</label>
+                                <input type="email" name="email" value={user?.email || ''} readOnly className="input w-full" />
+                            </div>
+                            {/* <div>
+                                <label className="label text-white font-semibold"> Date and Time</label>
+                                <input
+
+                                    type="datetime-local"
+                                    value={dateTime}
+                                    name="eventDate"
+                                    className='w-full input'
+                                />
+                            </div> */}
+                        </div>
+
+                        <input className="btn btn-primary mt-4" type="submit" value="Submit" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default UpdateBlog;
