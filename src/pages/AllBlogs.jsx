@@ -1,8 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
+import { toast, ToastContainer } from 'react-toastify';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const AllBlogs = () => {
+    const {user}=use(AuthContext)
     useEffect(() => {
         document.title = "All Blogs | techory";
     }, []);
@@ -25,26 +28,62 @@ const AllBlogs = () => {
 
     // ✅ Search handler (server-side)
 
-        const handleSearch = () => {
-            axios.get(`${import.meta.env.VITE_API_URL}/blogs`, {
-                params: { title: searchText }
+    const handleSearch = () => {
+        axios.get(`${import.meta.env.VITE_API_URL}/blogs`, {
+            params: { title: searchText }
+        })
+            .then(res => {
+                const result = res.data;
+                setFilteredData(
+                    selectedCategory === 'all'
+                        ? result
+                        : result.filter(blog => blog.category === selectedCategory)
+                );
             })
-                .then(res => {
-                    const result = res.data;
-                    setFilteredData(
-                        selectedCategory === 'all'
-                            ? result
-                            : result.filter(blog => blog.category === selectedCategory)
-                    );
-                })
-                .catch(error => {
-                    console.error("Error fetching blogs:", error);
-                });
-        };
-    
+            .catch(error => {
+                console.error("Error fetching blogs:", error);
+            });
+    };
+
+    const handleWishList = (id) => {
+        const wishData = data.find(blog => blog._id === id);
+
+        if (!wishData || !user?.email) {
+            toast.error("Invalid data or user not logged in.");
+            return;
+        }
+
+        axios.get(`${import.meta.env.VITE_API_URL}/wishlist/${id}?email=${user.email}`)
+            .then(checkRes => {
+                if (checkRes.data?.exists) {
+                    toast.info("This blog is already in your wishlist.");
+                } else {
+                    const dataToSave = {
+                        ...wishData,
+                        blogId: id,
+                        userEmail: user.email
+                    };
+                    delete dataToSave._id;
+
+                    axios.post(`${import.meta.env.VITE_API_URL}/wishlist`, dataToSave)
+                        .then(postRes => {
+                            if (postRes.data?.insertedId) {
+                                toast.success("You’ve successfully added the blog to your wishlist.");
+                            }
+                        })
+                        .catch(() => {
+                            toast.error("Failed to add to wishlist.");
+                        });
+                }
+            })
+            .catch(() => {
+                toast.error("Failed to check wishlist.");
+            });
+    };
 
     return (
         <div className='bg-secondary w-11/12 mx-auto mb-5 min-h-screen rounded-xl'>
+            <ToastContainer/>
             <h2 className='text-5xl font-bold text-white text-center pt-10'>All Blogs</h2>
 
             {/* Filter + Search */}
@@ -98,9 +137,7 @@ const AllBlogs = () => {
                                     <Link to={`/blogDetails/${event._id}`}>
                                         <button className='btn btn-primary'>View Details</button>
                                     </Link>
-                                    <Link to={`/wishlist/${event._id}`}>
-                                        <button className='btn btn-primary'>Wish List</button>
-                                    </Link>
+                                    <button onClick={() => handleWishList(event._id)} className='btn btn-primary'>Wishlist</button>
                                 </div>
                             </div>
                         </div>

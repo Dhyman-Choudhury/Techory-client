@@ -4,6 +4,8 @@ import NewsLetter from './NewsLetter';
 import { useLoaderData, useLocation } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import RecentBlogs from './RecentBlogs';
+import PopularPosts from './PopularPosts';
+import CategoryHighlights from './CategoryHighlights';
 
 const Home = () => {
       const location = useLocation();
@@ -29,6 +31,8 @@ const Home = () => {
                 <RecentBlogs newBlogs={newBlogs} ></RecentBlogs>
             </div>
             <NewsLetter></NewsLetter>
+            <PopularPosts></PopularPosts>
+            <CategoryHighlights></CategoryHighlights>
         </div>
     );
 };

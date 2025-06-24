@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthProvider';
+import { motion } from 'framer-motion';
 
 const RecentBlogs = ({ newBlogs }) => {
     const { user } = useContext(AuthContext);
@@ -48,11 +49,19 @@ const RecentBlogs = ({ newBlogs }) => {
 
     return (
         <div>
-            <h2 className='text-5xl font-bold text-white text-center pt-10'>Recent Blogs</h2>
+            <h2 className='text-5xl font-bold  text-white text-center pt-10'>Recent Blogs</h2>
             <div className='w-11/12 mx-auto py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     sliced.map(event => (
-                        <div key={event._id} className="bg-[#1B2431] shadow-xl rounded-xl m-6 w-full p-5">
+                        <motion.div
+                            key={event._id}
+                            whileHover={{
+                                y: -10,
+                                backgroundColor: "#21183e",
+                                transition: { duration: 0.5 }
+                            }}
+                            className="bg-[#1B2431] shadow-xl rounded-xl m-6 w-full p-5 cursor-pointer"
+                        >
                             <img
                                 src={event.photo}
                                 alt={event.title}
@@ -60,8 +69,12 @@ const RecentBlogs = ({ newBlogs }) => {
                             />
                             <div className="p-5 space-y-3">
                                 <h2 className="text-xl font-bold text-base-100 mb-1">{event.title}</h2>
-                                <p className="text-sm text-gray-600"><span className='font-semibold text-base-100'>Category :</span> {event.category}</p>
-                                <p className="text-sm text-gray-600"><span className='font-semibold text-base-100'>Short Description:</span> {event.shortDescription}</p>
+                                <p className="text-sm text-gray-600">
+                                    <span className='font-semibold text-base-100'>Category :</span> {event.category}
+                                </p>
+                                <p className="text-sm text-gray-600">
+                                    <span className='font-semibold text-base-100'>Short Description:</span> {event.shortDescription}
+                                </p>
                                 <div className='flex justify-between'>
                                     <Link to={`/blogDetails/${event._id}`}>
                                         <button className='btn btn-primary'>View Details</button>
@@ -69,7 +82,7 @@ const RecentBlogs = ({ newBlogs }) => {
                                     <button onClick={() => handleWishList(event._id)} className='btn btn-primary'>Wishlist</button>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))
                 }
             </div>

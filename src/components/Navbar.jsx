@@ -3,7 +3,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 import logo from '../assets/logo.png'
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthProvider';
-import { use } from 'react';
+import { use, useEffect } from 'react';
 
 
 
@@ -30,7 +30,7 @@ const Navbar = () => {
 
     const links = [
         <li><NavLink className="text-bold text-base-100" to='/'>Home</NavLink></li>,
-        <li><NavLink className="text-bold text-base-100" to='/featuredBlog'>Featured</NavLink></li>,
+        <li><NavLink className="text-bold text-base-100" to='/featuredBlog'>Featured Blogs</NavLink></li>,
         <li><NavLink className="text-bold text-base-100" to='/allBlogs'>All Blogs</NavLink></li>,
         <li>
             {user && (
@@ -42,16 +42,15 @@ const Navbar = () => {
                 </button>
             )}
         </li>,
-        <li>
+     
+         <li>
             {user && (
-                <button
-                    onClick={() => navigate(`/wishList/${user?.email}`)}
-                    className={` ${location.pathname.startsWith('/wishList') ? 'bg-[#60A5FA] text-white' : 'text-base-100'}`}
-                >
-                    Wishlist
-                </button>
+                
+            <NavLink className="text-bold text-base-100" to={`/wishList/${user?.email}`}> Wishlist</NavLink>
+        
             )}
         </li>
+      
 
     ]
     return (
@@ -96,7 +95,7 @@ const Navbar = () => {
                     </div>
                     <div className="dropdown lg:hidden">
                         <div tabIndex={0} role="" className="lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-base-100" fill="currentColor" viewBox="0 0 24 24">
                                 <circle cx="12" cy="5" r="1.5" />
                                 <circle cx="12" cy="12" r="1.5" />
                                 <circle cx="12" cy="19" r="1.5" />

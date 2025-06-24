@@ -12,6 +12,7 @@ import AllBlogs from "../pages/AllBlogs";
 import BlogDetails from "../pages/BlogDetails";
 import WishList from "../pages/WishList";
 import UpdateBlog from "../pages/UpdateBlog";
+import FeaturedBlogs from "../pages/FeaturedBlogs";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,12 @@ export const router = createBrowserRouter([
         hydrateFallbackElement: <Loading></Loading>,
         loader: () => fetch(`${import.meta.env.VITE_API_URL}/blogs`),
         Component: AllBlogs
+      },
+      {
+        path: '/featuredBlog',
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/blogs`),
+        Component: FeaturedBlogs
       },
       {
         path: '/blogDetails/:id',
@@ -62,14 +69,6 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         )
       },
-      // {
-      //   path: '/wishList',
-      //   element: (
-      //     <PrivateRoute>
-      //       <WishList></WishList>
-      //     </PrivateRoute>
-      //   )
-      // },
       {
         path: '/wishList/:email',
         hydrateFallbackElement: <Loading></Loading>,
