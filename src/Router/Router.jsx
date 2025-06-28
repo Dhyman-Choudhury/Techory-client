@@ -14,6 +14,10 @@ import WishList from "../pages/WishList";
 import UpdateBlog from "../pages/UpdateBlog";
 import FeaturedBlogs from "../pages/FeaturedBlogs";
 
+
+
+
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -71,8 +75,6 @@ export const router = createBrowserRouter([
       },
       {
         path: '/wishList/:email',
-        hydrateFallbackElement: <Loading></Loading>,
-        loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/wishlist/${params.email}`),
         element: (
           <PrivateRoute>
             <WishList></WishList>

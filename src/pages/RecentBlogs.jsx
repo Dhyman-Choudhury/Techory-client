@@ -9,14 +9,14 @@ const RecentBlogs = ({ newBlogs }) => {
     const { user } = useContext(AuthContext);
 
     const handleWishList = (id) => {
-        const wishData = newBlogs.find(blog => blog._id === id);
+       const wishData = newBlogs.find(blog => blog._id === id);
 
         if (!wishData || !user?.email) {
             toast.error("Invalid data or user not logged in.");
             return;
         }
 
-        axios.get(`${import.meta.env.VITE_API_URL}/wishlist/${id}?email=${user.email}`)
+         axios.get(`${import.meta.env.VITE_API_URL}/my-wishlist/${id}?email=${user.email}`)
             .then(checkRes => {
                 if (checkRes.data?.exists) {
                     toast.info("This blog is already in your wishlist.");
@@ -35,12 +35,12 @@ const RecentBlogs = ({ newBlogs }) => {
                             }
                         })
                         .catch(() => {
-                            toast.error("Failed to add to wishlist.");
+                            toast.error("Failed to add to wishlist 1.");
                         });
                 }
             })
             .catch(() => {
-                toast.error("Failed to check wishlist.");
+                toast.error("Failed to check wishlist 2.");
             });
     };
 
@@ -69,10 +69,10 @@ const RecentBlogs = ({ newBlogs }) => {
                             />
                             <div className="p-5 space-y-3">
                                 <h2 className="text-xl font-bold text-base-100 mb-1">{event.title}</h2>
-                                <p className="text-sm text-gray-600">
+                                <p className="text-sm text-base-100">
                                     <span className='font-semibold text-base-100'>Category :</span> {event.category}
                                 </p>
-                                <p className="text-sm text-gray-600">
+                                <p className="text-sm text-base-100">
                                     <span className='font-semibold text-base-100'>Short Description:</span> {event.shortDescription}
                                 </p>
                                 <div className='flex justify-between'>

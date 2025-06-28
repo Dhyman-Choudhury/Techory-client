@@ -3,10 +3,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
-import axios from 'axios';
+import useBlogsApi from '../api/useBlogsApi';
 
 
 const AddBlog = () => {
+
+    const {myBlogsPromise} = useBlogsApi()
 
     useEffect(() => {
         document.title = "Add Blog | techory"
@@ -32,14 +34,15 @@ const AddBlog = () => {
     }, []);
 
     const handleAddBlog = (e) => {
+       
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const blogsData = Object.fromEntries(formData.entries());
 
-        axios.post(`${import.meta.env.VITE_API_URL}/blogs`, blogsData)
+        myBlogsPromise(blogsData)
             .then(res => {
-                if (res?.data?.insertedId) {
+                if (res?.insertedId) {
                     toast.success('Blog added successfully!');
                     form.reset();
                 }

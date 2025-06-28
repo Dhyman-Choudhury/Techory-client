@@ -3,7 +3,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 import logo from '../assets/logo.png'
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthProvider';
-import { use, useEffect } from 'react';
+import { use } from 'react';
 
 
 
@@ -24,7 +24,7 @@ const Navbar = () => {
                 toast.success('You logged out')
             })
             .catch(error => {
-                console.log(error)
+                toast(error.message)
             })
     }
 
@@ -142,11 +142,11 @@ const Navbar = () => {
                 </div>
 
             </div>
-            {/* <div className='lg:hidden flex justify-end pr-2'>
+             <div className='lg:hidden flex justify-end pr-2'>
                 {
-                    user ? <div className='text-black font-semibold'>{user.email}</div> : ''
+                    user ? <div className='text-base-100 mb-1 font-semibold'>{user.email}</div> : ''
                 }
-            </div> */}
+            </div> 
         </div>
     );
 };

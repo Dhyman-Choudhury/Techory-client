@@ -47,8 +47,8 @@ const Login = () => {
         googleLogin()
             .then(result => {
 
-                const user = result.user;
-                console.log(user)
+                // const user = result.user;
+                // console.log(user)
                 toast.success('You logged in successfully')
                 navigate('/')
             })

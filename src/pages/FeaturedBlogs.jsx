@@ -77,7 +77,8 @@ const FeaturedBlogs = () => {
 
     return (
         <div className="p-6 bg-secondary">
-            <h1 className="text-3xl font-bold mb-6 text-base-100"> Featured Blogs (Top 10 by Word Count)</h1>
+            <h1 className="text-3xl font-bold mb-5 text-base-100"> Featured Blogs (Top 10 by Word Count)</h1>
+            <p className="mb-10 text-lg text-base-100">TanStack Table has been used to enable sorting of each column's data in ascending or descending order. You can check it by clicking the arrows shown in each column header.</p>
 
             {/* ✅ AES & DES Buttons */}
             <div className="flex gap-4 mb-4">

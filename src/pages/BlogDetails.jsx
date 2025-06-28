@@ -36,7 +36,7 @@ const BlogDetails = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error.message);
+        toast.warn(error.message);
         setLoading(false);
       });
   }, [blogId]);

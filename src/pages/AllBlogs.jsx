@@ -53,7 +53,7 @@ const AllBlogs = () => {
             return;
         }
 
-        axios.get(`${import.meta.env.VITE_API_URL}/wishlist/${id}?email=${user.email}`)
+        axios.get(`${import.meta.env.VITE_API_URL}/my-wishlist/${id}?email=${user.email}`)
             .then(checkRes => {
                 if (checkRes.data?.exists) {
                     toast.info("This blog is already in your wishlist.");
@@ -72,12 +72,12 @@ const AllBlogs = () => {
                             }
                         })
                         .catch(() => {
-                            toast.error("Failed to add to wishlist.");
+                            toast.error("Failed to add to wishlist-1.");
                         });
                 }
             })
             .catch(() => {
-                toast.error("Failed to check wishlist.");
+                toast.error("Failed to check wishlist-2.");
             });
     };
 
