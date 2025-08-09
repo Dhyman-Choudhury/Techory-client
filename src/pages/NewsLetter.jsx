@@ -19,7 +19,7 @@ const NewsLetter = () => {
   };
 
   return (
-     <section className="w-11/12 mx-auto bg-gradient-to-r from-[#234652] to-[#3c325d] py-10 px-4 md:px-10 rounded-xl my-12 ">
+     <section className="w-full bg-gradient-to-r from-[#234652] to-[#3c325d] py-10 px-4 md:px-10 rounded-xl my-12 ">
      <ToastContainer/>
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-4xl text-base-100 font-bold mb-3">Newsletter Section </h2>

@@ -48,7 +48,7 @@ const RecentBlogs = ({ newBlogs }) => {
     const sliced = sortedBlogs.slice(0, 6);
 
     return (
-        <div>
+        <div className='w-full'>
             <h2 className='text-5xl font-bold  text-white text-center pt-10'>Recent Blogs</h2>
             <div className='w-11/12 mx-auto py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
@@ -60,7 +60,7 @@ const RecentBlogs = ({ newBlogs }) => {
                                 backgroundColor: "#21183e",
                                 transition: { duration: 0.5 }
                             }}
-                            className="bg-[#1B2431] shadow-xl rounded-xl m-6 w-full p-5 cursor-pointer"
+                            className="bg-[#1B2431] shadow-xl rounded-xl w-full p-5 cursor-pointer"
                         >
                             <img
                                 src={event.photo}

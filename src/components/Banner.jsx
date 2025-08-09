@@ -6,7 +6,7 @@ import image2 from '../assets/images/ai-2.jpg'
 
 const Banner = () => {
     return (
-       <div className='hero w-11/12  mx-auto min-h-96 '>
+       <div className='hero w-full  mx-auto min-h-96 '>
         <div className='pb-5 w-full flex flex-col lg:flex-row-reverse gap-10' 
           style={{
                 backgroundImage: `url(${banner})`,

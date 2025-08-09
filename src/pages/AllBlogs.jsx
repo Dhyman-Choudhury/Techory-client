@@ -82,7 +82,7 @@ const AllBlogs = () => {
     };
 
     return (
-        <div className='bg-secondary w-11/12 mx-auto mb-5 min-h-screen rounded-xl'>
+        <div className='bg-secondary w-full mb-5 min-h-screen rounded-xl'>
             <ToastContainer/>
             <h2 className='text-5xl font-bold text-white text-center pt-10'>All Blogs</h2>
 

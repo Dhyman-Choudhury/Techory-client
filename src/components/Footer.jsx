@@ -47,7 +47,7 @@ const Footer = () => {
             <img className='w-14 h-14 rounded-full bg-teal-50' src={logo} alt="Logo" />
             <button onClick={() => navigate('/')} className="">
               <h1 className="text-3xl font-extrabold tracking-wide text-[#66e3e3e5]">
-                te<span className="text-white">ch</span>
+                Te<span className="text-white">ch</span>
                 <span className="text-[#54de7ff2]">ory</span>
               </h1>
             </button>

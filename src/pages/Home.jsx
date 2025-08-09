@@ -27,7 +27,7 @@ const Home = () => {
         <div className=''>
             <ToastContainer/>
             <Banner></Banner>
-              <div className=' w-11/12 mx-auto bg-secondary my-10 rounded-xl'>
+              <div className=' bg-secondary my-10 rounded-xl'>
                 <RecentBlogs newBlogs={newBlogs} ></RecentBlogs>
             </div>
             <NewsLetter></NewsLetter>

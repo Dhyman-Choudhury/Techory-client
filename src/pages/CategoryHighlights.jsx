@@ -82,7 +82,7 @@ const cardVariants = {
 
 const CategoryHighlights = () => {
   return (
-    <section className="py-12 px-4 md:px-16 bg-secondary mb-10 w-11/12 mx-auto rounded-xl">
+    <section className="py-12 px-4 md:px-16 bg-secondary mb-10 w-full rounded-xl">
       <h2 className="text-3xl font-bold text-center text-base-100 mb-5">
         🛠️ Recommended AI Tools & What You Can Do
       </h2>

@@ -9,9 +9,11 @@ import { router } from './Router/Router.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <div className='w-11/12 mx-auto'>
+   <StrictMode>
   <AuthProvider>
      <RouterProvider router={router} />
   </AuthProvider>
-  </StrictMode>,
+  </StrictMode>
+  </div>,
 )

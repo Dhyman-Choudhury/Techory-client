@@ -48,7 +48,7 @@ const popularPosts = [
 
 const PopularPosts = () => {
   return (
-    <section className="py-10 px-4 md:px-16  w-11/12 mx-auto rounded-xl mb-10 bg-secondary">
+    <section className="py-10 px-4 md:px-16  w-full rounded-xl mb-10 bg-secondary">
       <h2 className="text-4xl font-bold mb-6 text-base-100 text-center "> Trending Now</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {popularPosts.map(post => (
