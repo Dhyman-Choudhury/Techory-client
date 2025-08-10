@@ -67,7 +67,7 @@ const Login = () => {
     };
 
     return (
-        <div className='w-11/12 mx-auto my-5 flex justify-center min-h-screen items-center bg-secondary'>
+        <div className='w-full mb-10 rounded-xl flex justify-center min-h-screen items-center bg-secondary'>
             <ToastContainer />
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
                 <h2 className='font-semibold text-2xl text-center'>Login your account</h2>

@@ -72,7 +72,7 @@ const PopularPosts = () => {
   return (
     <section className="py-10 px-4 md:px-16 w-full rounded-xl mb-10 bg-secondary">
       <h2 className="text-4xl font-bold mb-8 text-base-100 text-center tracking-wide">
-        🔥 Trending Now
+         Trending Now
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {popularPosts.map((post, index) => (

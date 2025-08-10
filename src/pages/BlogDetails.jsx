@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { FaPen } from "react-icons/fa";
+import React, { useEffect, useState, useContext } from 'react';
+import { FaPen, FaPaperPlane } from "react-icons/fa"; // Changed icon to FaPaperPlane
 import { Link, useLoaderData, useLocation, useParams } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthProvider';
@@ -9,22 +9,23 @@ import Loading from './Loading';
 
 const BlogDetails = () => {
   const { id: blogId } = useParams();
-  const { user } = React.useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const event = useLoaderData();
   const location = useLocation();
 
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [commentText, setCommentText] = useState("");
 
   useEffect(() => {
     if (location.state?.message) {
-      toast.success(location.state.message);
+      toast.success(location.state.message, { autoClose: 2500 });
       window.history.replaceState({}, document.title);
     }
   }, [location]);
 
   useEffect(() => {
-    document.title = "Blog Details | techory";
+    document.title = "Blog Details | Techory";
   }, []);
 
   useEffect(() => {
@@ -33,23 +34,26 @@ const BlogDetails = () => {
       .then((res) => {
         const filtered = res.data.filter((comment) => comment.blogId === blogId);
         setComments(filtered);
-        setLoading(false);
       })
       .catch((error) => {
-        toast.warn(error.message);
-        setLoading(false);
-      });
+        toast.error(`Failed to load comments: ${error.message}`);
+      })
+      .finally(() => setLoading(false));
   }, [blogId]);
 
-  const handleComment = (e) => {
-    e.preventDefault();
-    const text = e.target.comment.value;
+  const handleCommentSubmit = () => {
+    const text = commentText.trim();
+
+    if (!text) {
+      toast.warn("Comment cannot be empty.");
+      return;
+    }
 
     const comment = {
       blogId,
-      commenter_name: user?.displayName,
+      commenter_name: user?.displayName || "Anonymous",
       commenter_email: user?.email,
-      photo:user?.photoURL,
+      photo: user?.photoURL,
       text,
     };
 
@@ -57,33 +61,50 @@ const BlogDetails = () => {
       .post(`${import.meta.env.VITE_API_URL}/comments`, comment)
       .then((res) => {
         if (res?.data?.insertedId) {
-          toast.success('You added comment successfully');
-          e.target.reset();
-
-          // 🔁 Refresh comment list after successful comment
+          toast.success('✅ Comment added successfully');
+          setCommentText("");
           setComments((prev) => [...prev, comment]);
         }
       })
       .catch((error) => {
-        toast.warn(error.message);
+        toast.error(`Error adding comment: ${error.message}`);
       });
   };
 
-   const handleToast = ()=>{
-     toast("You can not edit other's blog.")
-   }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleCommentSubmit();
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleCommentSubmit();
+    }
+  };
+
+  const handleToast = () => {
+    toast.info("You cannot edit someone else's blog.");
+  };
+
   return (
     <div>
       <ToastContainer />
-      <div className="my-10 w-11/12 mx-auto flex flex-col gap-5 md:flex-row lg:gap-10 bg-secondary shadow-md rounded-xl overflow-hidden p-5">
-        {/* Image Section */}
-        <div className="w-2/5">
-          <img src={event.photo} alt={event.title} className="rounded-xl object-cover h-full w-full" />
+
+      {/* Blog Info */}
+      <section className="mb-10 w-full  px-3 md:px-10 lg:px-16 flex flex-col gap-5 md:flex-row lg:gap-10 bg-secondary shadow-md rounded-xl overflow-hidden py-5 lg:py-10 ">
+        {/* Blog Image */}
+        <div className="w-full md:w-2/5">
+          <img
+            src={event.photo}
+            alt={event.title}
+            className="rounded-xl object-cover  w-full"
+          />
         </div>
 
-        {/* Content Section */}
-        <div className="p-5 w-2/5 text-base-100">
-          <h2 className="text-xl font-bold mb-1">{event.title}</h2>
+        {/* Blog Content */}
+        <div className="p-5 w-full md:w-2/5 text-base-100">
+          <h2 className="text-2xl font-bold mb-3">{event.title}</h2>
           <p><span className="font-semibold">Category:</span> {event.category}</p>
           <p><span className="font-semibold">Description:</span> {event.shortDescription}</p>
           <p><span className="font-semibold">Long Description:</span> {event.longDescription}</p>
@@ -91,45 +112,66 @@ const BlogDetails = () => {
           <p><span className="font-semibold">Writer:</span> {event.name}</p>
           <p><span className="font-semibold">Email:</span> {event.email}</p>
         </div>
-        <div>
-          {
-            event?.email === user?.email ? <Link to={`/updateBlog/${event._id}`}><button className="p-3 rounded-lg bg-sky-300 text-white"><FaPen size={20} /></button></Link> : <button onClick={()=>handleToast()} className="p-3 rounded-lg bg-sky-300 text-white"><FaPen size={20} /></button>
-          }
-        </div>
-      </div>
 
-      <div className="mb-10 w-11/12 mx-auto p-5">
-        {/* Comment Form or Restriction */}
-        <div className="mb-10">
+        {/* Edit Button */}
+        <div className="flex items-start">
+          {event?.email === user?.email ? (
+            <Link to={`/updateBlog/${event._id}`}>
+              <button
+                className="p-3 rounded-lg bg-sky-300 hover:bg-sky-400 transition text-white"
+                aria-label="Edit Blog"
+              >
+                <FaPen size={20} />
+              </button>
+            </Link>
+          ) : (
+            <button
+              onClick={handleToast}
+              className="p-3 rounded-lg bg-sky-300 hover:bg-sky-400 transition text-white"
+              aria-label="Edit Blog Disabled"
+            >
+              <FaPen size={20} />
+            </button>
+          )}
+        </div>
+      </section>
+        
+      <div className="bg-secondary p-6 rounded-xl flex flex-col md:flex-row mb-10 px-3 md:px-10 lg:px-16 md:overflow-x-auto">
+        <aside className="lg:w-1/4 bg-secondary rounded-xl p-4 h-fit sticky top-4 self-start mb-6 md:mb-0">
+          <h3 className="text-lg font-semibold text-base-100 mb-4">Leave a Comment</h3>
+
           {user?.email === event?.email ? (
-            <div className="bg-secondary p-10 flex-1 rounded-xl">
-              <h3 className="text-2xl font-bold text-base-100">You are not allowed to comment on your own blog.</h3>
-            </div>
+            <p className="text-base-100 text-sm">
+              You are not allowed to comment on your own blog.
+            </p>
           ) : (
-            <div className="bg-secondary p-10 flex-1 rounded-xl gap-5">
-              <form className="flex flex-col" onSubmit={handleComment}>
-                <textarea
-                  className="bg-base-100 text-base-content p-3 rounded mb-4"
-                  cols={40}
-                  rows={2}
-                  name="comment"
-                  placeholder="Comment here"
-                  required
-                ></textarea>
-                <input className="btn btn-primary" type="submit" value="Submit" />
-              </form>
-            </div>
-          )}
-        </div>
+            <form
+              className="flex flex-col gap-3 relative"
+              onSubmit={handleSubmit}
+            >
+              <input
+                className="bg-base-100 text-base-content flex-1 resize-none focus:outline-none rounded-full p-2 text-sm pr-10"
+                name="comment"
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Write a comment..."
+                aria-label="Write a comment"
+              />
 
-        {/* All Comments */}
-        <div className="bg-secondary p-10 rounded-xl flex-1">
-          <h3 className="text-4xl font-bold text-base-100 text-center mb-5">All Comments</h3>
-          {loading ? (
-            <Loading/>
-          ) : (
-            <AllComments data={comments} />
+              <FaPaperPlane
+                onClick={handleCommentSubmit}
+                className="absolute right-3 top-2.5 md:top-3 text-blue-500 cursor-pointer"
+                size={20}
+                title="Submit Comment"
+                aria-label="Submit Comment"
+              />
+            </form>
           )}
+        </aside>
+        <div className='w-full md:w-3/4'>
+          <h3 className="text-2xl font-bold text-base-100 mb-4">All Comments</h3>
+          {loading ? <Loading /> : <AllComments data={comments} />}
         </div>
       </div>
     </div>

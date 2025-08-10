@@ -75,7 +75,7 @@ const Footer = () => {
             <li><a href="/about" className="hover:text-primary">About Us</a></li>
           </ul>
         </div>
-        <div className='flex flex-col  items-center mt-5 md:mt-0'>
+        <div className='flex flex-col  items-center mt-5 md:mt-3'>
           <h2 className="text-xl font-bold m-0 p-0">Routes</h2>
           <ul className="menu">
             {links}
@@ -83,7 +83,7 @@ const Footer = () => {
         </div>
 
         {/* Social Icons */}
-        <div className='mt-5  md:mt-0'>
+        <div className='mt-5  md:mt-3'>
           <h2 className="text-xl font-bold mb-2">Follow Us</h2>
           <div className="flex justify-center space-x-4 mt-2 text-2xl">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500"><FaFacebook /></a>
