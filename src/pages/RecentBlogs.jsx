@@ -87,9 +87,9 @@ const RecentBlogs = ({ newBlogs }) => {
                 </div>
                 <div className='flex justify-between mt-5'>
                   <Link to={`/blogDetails/${event._id}`}>
-                    <button className='text-primary md:font-semibold flex items-center md:gap-1'>
+                    <div className='text-primary md:font-semibold flex items-center md:gap-1'>
                       <p>View Details</p> <FaArrowRight />
-                    </button>
+                    </div>
                   </Link>
                   <button onClick={() => handleWishList(event._id)} className='btn btn-primary'>
                     Wishlist
