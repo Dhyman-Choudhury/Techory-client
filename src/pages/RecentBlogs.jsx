@@ -91,8 +91,12 @@ const RecentBlogs = ({ newBlogs }) => {
                       <p>View Details</p> <FaArrowRight />
                     </div>
                   </Link>
-                  <button onClick={() => handleWishList(event._id)} className='btn btn-primary'>
-                    Wishlist
+                  <button
+                    onClick={() => handleWishList(event?._id)}
+                    className="flex  items-center gap-1 text-primary hover:underline bg-transparent border-none p-0 cursor-pointer"
+                    type="button"
+                  >
+                    <span className='btn btn-soft btn-success'>Wishlist</span>
                   </button>
                 </div>
               </div>

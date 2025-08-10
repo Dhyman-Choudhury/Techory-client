@@ -62,7 +62,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-gradient-to-r from-[#0F172A] to-[#0b1740] px-3 md:px-10 lg:px-16 mx-auto rounded-xl my-5">
+    <header className="w-full sticky top-0 z-50 bg-gradient-to-r from-[#0F172A] to-[#0b1740] px-3 md:px-10 lg:px-16 mx-auto rounded-xl mb-10">
       <nav className="navbar">
         {/* Navbar Start */}
         <div className="navbar-start">

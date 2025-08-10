@@ -54,13 +54,13 @@ const AddBlog = () => {
     };
 
     return (
-        <div className="min-h-[calc(100vh-340px)] my-10 w-11/12 mx-auto">
+        <div className=" mb-10 w-full ">
             <ToastContainer />
             <div className="card bg-secondary  mx-auto shadow-2xl py-5 px-10">
                 <h2 className="text-4xl font-semibold text-white text-center">Add Your Blog</h2>
                 <div className="card-body">
                     <form onSubmit={handleAddBlog} className="fieldset">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
                             <div>
                                 <label className="label text-white font-semibold">Photo URL</label>
                                 <input type="text" name="photo" className="input w-full" placeholder='Photo URL' required />
@@ -77,7 +77,7 @@ const AddBlog = () => {
                                     <option disabled selected value="">Pick a Category</option>
                                     <option>AI News & Trends</option>
                                     <option>Machine Learning</option>
-                                    <option>Deep Learning</option>
+                                    <option>Deep Learning</option> 
                                     <option>AI Tools & Frameworks</option>
                                     <option>AI Applications</option>
                                     <option>AI Career & Learning</option>

@@ -11,7 +11,7 @@ const AllBlogs = () => {
     const { user } = use(AuthContext);
 
     useEffect(() => {
-        document.title = "All Blogs | techory";
+        document.title = "All Blogs | Techory";
     }, []);
 
     const data = useLoaderData();
@@ -101,7 +101,7 @@ const AllBlogs = () => {
     };
 
     return (
-        <div className='bg-gray-100 w-full min-h-screen rounded-xl flex flex-col md:flex-row p-6 gap-6 mb-5'>
+        <div className='bg-gray-100 w-full min-h-screen rounded-xl flex flex-col md:flex-row p-6 gap-6 mb-10'>
 
             <ToastContainer />
 
@@ -162,11 +162,11 @@ const AllBlogs = () => {
                                     <p className="text-sm text-gray-600"><span className='font-semibold text-gray-900'>Category :</span> {event.category}</p>
                                     <p className="text-sm text-gray-600 flex-grow"><span className='font-semibold text-gray-900'>Short Description:</span> {event.shortDescription}</p>
                                     <div className='flex justify-between pt-3 text-primary md:font-semibold'>
-                                        <Link to={`/blogDetails/${event._id}`} className='flex items-center gap-1 hover:underline'>
+                                        <Link to={`/blogDetails/${event?._id}`} className='flex items-center gap-1 hover:underline'>
                                             <span>View Details</span> <FaArrowRight />
                                         </Link>
                                         <button
-                                            onClick={() => handleWishList(event._id)}
+                                            onClick={() => handleWishList(event?._id)}
                                             className="flex  items-center gap-1 text-primary hover:underline bg-transparent border-none p-0 cursor-pointer"
                                             type="button"
                                         >

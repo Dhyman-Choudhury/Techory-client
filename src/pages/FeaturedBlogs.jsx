@@ -76,7 +76,7 @@ const FeaturedBlogs = () => {
     });
 
     return (
-        <div className="p-8 bg-secondary mb-5 px-3 md:px-10 lg:px-16">
+        <div className="p-8 bg-secondary rounded-xl px-3 md:px-10 lg:px-16 mb-10">
             <h1 className="text-3xl font-bold mb-8 text-base-100 text-center"> Featured Blogs</h1>
             
 
