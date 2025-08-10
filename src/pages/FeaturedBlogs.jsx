@@ -76,15 +76,12 @@ const FeaturedBlogs = () => {
     });
 
     return (
-        <div className="p-8 bg-secondary mb-5">
-            <h1 className="text-3xl font-bold mb-5 text-base-100"> Featured Blogs (Top 10 by Word Count)</h1>
-            <p className="mb-10 text-lg text-base-100">TanStack Table has been used to enable sorting of each column's data in ascending or descending order. You can check it by clicking the arrows shown in each column header.</p>
+        <div className="p-8 bg-secondary mb-5 px-3 md:px-10 lg:px-16">
+            <h1 className="text-3xl font-bold mb-8 text-base-100 text-center"> Featured Blogs</h1>
+            
 
-            {/* ✅ AES & DES Buttons */}
-            <div className="flex gap-4 mb-4">
-                <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">AES</button>
-                <button className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">DES</button>
-            </div>
+            
+           
 
             {/* ✅ Table */}
             <div className="overflow-x-auto border rounded shadow-sm">
