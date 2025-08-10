@@ -52,7 +52,7 @@ const RecentBlogs = ({ newBlogs }) => {
     <div className='w-full bg-gray-100 px-3 md:px-10 lg:px-16 py-10'>
       <h2 className='text-5xl font-bold text-gray-800 text-center mb-12'>Recent Blogs</h2>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
         {sliced.map((event, index) => {
           const isLeftColumn = index % 2 === 0;
 
@@ -67,14 +67,14 @@ const RecentBlogs = ({ newBlogs }) => {
                 boxShadow: "0 12px 24px rgba(0,0,0,0.15)",
                 transition: { duration: 0.6 }
               }}
-              className="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer flex flex-col md:flex-row"
+              className="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer flex flex-col lg:flex-row"
               style={{ minHeight: '200px' }}
             >
               <div className="p-3 flex-shrink-0">
                 <img
                   src={event.photo}
                   alt={event.title}
-                  className="w-full md:w-48 h-48 object-cover rounded-lg"
+                  className="w-full lg:w-48 h-48 object-cover rounded-lg"
                 />
               </div>
               <div className="p-5 flex flex-col justify-between flex-grow min-w-0 md:ml-5">

@@ -42,7 +42,7 @@ const Banner = () => {
           }}>
             
 
-        <div className='flex-1 ml-5 flex flex-col md:items-center lg:items-start lg:ml-10'>
+        <div className='flex-1 ml-5 sm:ml-7 flex flex-col md:items-center lg:items-start lg:ml-10'>
           <motion.img
           src={image1}
           animate={{y: [100, 150, 100]}}

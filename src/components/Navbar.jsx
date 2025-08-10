@@ -62,7 +62,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-gradient-to-r from-[#0F172A] to-[#112565] px-3 md:px-10 lg:px-16 mx-auto rounded-xl my-5">
+    <header className="w-full sticky top-0 z-50 bg-gradient-to-r from-[#0F172A] to-[#0b1740] px-3 md:px-10 lg:px-16 mx-auto rounded-xl my-5">
       <nav className="navbar">
         {/* Navbar Start */}
         <div className="navbar-start">
@@ -170,7 +170,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-2">
             {user && (
               <img
-                className="w-16 h-16 object-cover rounded-full"
+                className="w-16 h-16 object-cover rounded-full text-white"
                 src={user.photoURL}
                 alt={user.displayName || 'User profile'}
                 title={user.displayName || ''}
