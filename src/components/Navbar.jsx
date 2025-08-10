@@ -1,5 +1,5 @@
 import { NavLink, useLocation, useNavigate } from 'react-router';
-import logo from '../assets/logo-2.png';
+import logo from '../assets/logo-4.webp';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthProvider';
 import { use } from 'react';
@@ -136,7 +136,7 @@ const Navbar = () => {
             onClick={() => navigate('/')}
           >
             <img
-              className="hidden md:block w-14 h-14 rounded-full bg-teal-50"
+              className="hidden md:block w-14 h-14 rounded-full "
               src={logo}
               alt="Techory Logo"
             />

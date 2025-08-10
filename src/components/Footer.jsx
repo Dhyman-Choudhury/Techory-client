@@ -1,6 +1,6 @@
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { NavLink, useNavigate } from 'react-router';
-import logo from '../assets/logo.png'
+import logo from '../assets/logo-4.webp'
 import { use } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 
@@ -12,39 +12,49 @@ const Footer = () => {
     navigate('/addBlog')
   }
    const links = [
-        <li><NavLink className="text-bold text-base-100" to='/'>Home</NavLink></li>,
-        <li><NavLink className="text-bold text-base-100" to='/featuredBlog'>Featured</NavLink></li>,
-        <li><NavLink className="text-bold text-base-100" to='/allBlogs'>All Blogs</NavLink></li>,
-        <li>
-            {user && (
-                <button
-                    onClick={handleNavigate}
-                    className={`${location.pathname === '/addBlog' ? 'bg-[#60A5FA] text-white' : 'text-base-100'}`}
-                >
-                    Add Blog
-                </button>
-            )}
-        </li>,
-        <li>
-            {user && (
-                <button
-                    onClick={() => navigate(`/wishList/${user?.email}`)}
-                    className={` ${location.pathname.startsWith('/wishList') ? 'bg-[#60A5FA] text-white' : 'text-base-100'}`}
-                >
-                    Wishlist
-                </button>
-            )}
-        </li>
-
-    ]
+    <li key="home">
+      <NavLink className="text-bold text-base-100" to="/">
+        Home
+      </NavLink>
+    </li>,
+    <li key="featured">
+      <NavLink className="text-bold text-base-100" to="/featuredBlog">
+        Featured Blogs
+      </NavLink>
+    </li>,
+    <li key="all">
+      <NavLink className="text-bold text-base-100" to="/allBlogs">
+        All Blogs
+      </NavLink>
+    </li>,
+    <li key="add-blog">
+      {user && (
+        <button
+          onClick={handleNavigate}
+          className={`${
+            location.pathname === '/addBlog' ? 'bg-[#60A5FA] text-white' : 'text-base-100'
+          }`}
+        >
+          Add Blog
+        </button>
+      )}
+    </li>,
+    <li key="wishlist">
+      {user && (
+        <NavLink className="text-bold text-base-100" to={`/wishList/${user?.email}`}>
+          Wishlist
+        </NavLink>
+      )}
+    </li>,
+  ];
   return (
-    <footer className="bg-gradient-to-r from-[#0F172A] via-[#0a2043] to-[#030439cb]  text-white py-10 ">
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-5">
+    <footer className="bg-gradient-to-r from-[#0F172A] via-[#0a2043] to-[#030439cb]  text-white py-10 px-3 md:px-10 lg:px-16 ">
+      <div className="container mx-auto  grid grid-cols-2 md:grid-cols-4 text-center">
 
         {/* Company Info */}
         <div>
           <div className='flex  items-center gap-2'>
-            <img className='w-14 h-14 rounded-full bg-teal-50' src={logo} alt="Logo" />
+            <img className='w-14 h-14 rounded-full object-cover' src={logo} alt="Logo" />
             <button onClick={() => navigate('/')} className="">
               <h1 className="text-3xl font-extrabold tracking-wide text-[#66e3e3e5]">
                 Te<span className="text-white">ch</span>
@@ -65,9 +75,9 @@ const Footer = () => {
             <li><a href="/about" className="hover:text-primary">About Us</a></li>
           </ul>
         </div>
-        <div>
+        <div className='flex flex-col justify-center items-center'>
           <h2 className="text-xl font-bold mb-2">Routes</h2>
-          <ul className="space-y-2 text-sm ">
+          <ul className="   menu">
             {links}
           </ul>
         </div>
@@ -75,7 +85,7 @@ const Footer = () => {
         {/* Social Icons */}
         <div>
           <h2 className="text-xl font-bold mb-2">Follow Us</h2>
-          <div className="flex space-x-4 mt-2 text-2xl">
+          <div className="flex justify-center space-x-4 mt-2 text-2xl">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500"><FaFacebook /></a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400"><FaTwitter /></a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500"><FaInstagram /></a>
