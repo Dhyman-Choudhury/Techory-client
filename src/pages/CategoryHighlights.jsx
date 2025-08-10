@@ -50,7 +50,7 @@ const aiTools = [
   },
   {
     name: "Midjourney",
-    logo: "https://midjourney.com/apple-touch-icon.png",
+    logo: "https://chatgpt-prompt.fr/wp-content/uploads/2023/05/100-midjourney-prompts.jpg",
     desc: "Generate artistic images from text prompts.",
     features: ["Text-to-image generation", "Style experimentation"],
     pricing: "Paid subscription",
@@ -66,7 +66,7 @@ const aiTools = [
   },
   {
     name: "Gamma App",
-    logo: "https://gamma.app/favicon-196.png",
+    logo: "https://store-images.s-microsoft.com/image/apps.8665.13800228740496758.3ed8203a-9357-4240-af11-1c4d197a5191.53ffdb99-0581-473a-8317-33bcebbdc65f",
     desc: "AI-powered presentation and document creation tool.",
     features: ["Slide design automation", "Text-to-presentation", "Collaboration tools"],
     pricing: "Freemium",
@@ -127,9 +127,9 @@ const CategoryHighlights = () => {
           >
             {/* Logo */}
             <img
-              src={tool.logo}
-              alt={tool.name}
-              className="h-16 w-16 object-contain rounded-full bg-gray-50 p-2 group-hover:scale-110 transition"
+              src={tool?.logo}
+              alt={tool?.name}
+              className="h-16 w-16  rounded-full bg-gray-50 p-2 group-hover:scale-110 transition"
             />
 
             {/* Content */}
