@@ -57,7 +57,7 @@ const AddBlog = () => {
         <div className=" mb-10 w-full ">
             <ToastContainer />
             <div className="card bg-secondary  mx-auto shadow-2xl py-5 px-10">
-                <h2 className="text-4xl font-semibold text-white text-center">Add Your Blog</h2>
+                <h2 className="text-4xl font-bold text-white text-center">Add Your Blog</h2>
                 <div className="card-body">
                     <form onSubmit={handleAddBlog} className="fieldset">
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-5">

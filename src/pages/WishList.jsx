@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router'; // 🛠️ changed from 'react
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
 import useWishlist from '../api/useWishlist';
+import Loading from './Loading';
 
 const WishList = () => {
     const { user } = useContext(AuthContext);
@@ -64,17 +65,17 @@ const WishList = () => {
     };
 
     if (loading) {
-        return <div className='text-center text-white py-20'>Loading...</div>
+        return <Loading></Loading>
     }
 
     return (
-        <div className='bg-secondary w-11/12 mx-auto min-h-[calc(100vh-340px)] my-10 rounded-xl'>
-            <h2 className='text-5xl font-bold text-white text-center pt-10'>Your Wishlist Blogs</h2>
+        <div className='bg-secondary w-full px-3 md:px-10 lg:px-16 min-h-[calc(100vh-340px)] my-10 rounded-xl'>
+            <h2 className='text-4xl font-bold text-white text-center pt-10'>Your Wishlist Blogs</h2>
 
             {Array.isArray(data) && data.length > 0 ? (
-                <div className='w-11/12 mx-auto py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+                <div className='w-11/12 mx-auto py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
                     {data.map(event => (
-                        <div key={event._id} className="bg-[#1B2431] shadow-xl rounded-xl m-6 w-full p-5">
+                        <div key={event._id} className="bg-[#1B2431] shadow-xl rounded-xl  w-full p-5">
                             <img
                                 src={event.photo}
                                 alt={event.title}

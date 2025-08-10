@@ -13,6 +13,10 @@ import BlogDetails from "../pages/BlogDetails";
 import WishList from "../pages/WishList";
 import UpdateBlog from "../pages/UpdateBlog";
 import FeaturedBlogs from "../pages/FeaturedBlogs";
+import About from "../pages/quickLinks/About";
+import ContactUs from "../pages/quickLinks/ContactUs";
+import PrivacyPolicy from "../pages/quickLinks/PrivacyPolicy";
+import TermsAndConditions from "../pages/quickLinks/TermsAndConditions";
 
 
 
@@ -37,6 +41,22 @@ export const router = createBrowserRouter([
         hydrateFallbackElement: <Loading></Loading>,
         loader: () => fetch(`${import.meta.env.VITE_API_URL}/blogs`),
         Component: AllBlogs
+      },
+      {
+        path: '/about',
+        Component: About
+      },
+      {
+        path: '/contact',
+        Component: ContactUs
+      },
+      {
+        path: '/privacy',
+        Component: PrivacyPolicy
+      },
+      {
+        path: '/terms',
+        Component: TermsAndConditions
       },
       {
         path: '/featuredBlog',

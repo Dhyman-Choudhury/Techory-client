@@ -49,7 +49,7 @@ const RecentBlogs = ({ newBlogs }) => {
   const sliced = sortedBlogs.slice(0, 8); // Show 8 cards
 
   return (
-    <div className='w-full bg-gray-100 px-3 md:px-10 lg:px-16 py-10'>
+    <div className='w-full bg-gray-100 px-3 md:px-10 lg:px-16 py-10 rounded-xl'>
       <h2 className='text-5xl font-bold text-gray-800 text-center mb-12'>Recent Blogs</h2>
 
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>

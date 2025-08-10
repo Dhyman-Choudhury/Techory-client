@@ -48,8 +48,8 @@ const Footer = () => {
     </li>,
   ];
   return (
-    <footer className="bg-gradient-to-r from-[#0F172A] via-[#0a2043] to-[#030439cb]  text-white py-10 px-3 md:px-10 lg:px-16 ">
-      <div className="container mx-auto  grid grid-cols-2 md:grid-cols-4 text-center">
+    <footer className="bg-gradient-to-r from-[rgb(15,23,42)] via-[#0a2043] to-[#030439cb]  text-white py-10 px-3 md:px-10 lg:px-16 ">
+      <div className="container mx-auto  grid sm:grid-cols-2 md:grid-cols-4 text-center">
 
         {/* Company Info */}
         <div>
@@ -67,7 +67,7 @@ const Footer = () => {
 
         {/* Links */}
         <div>
-          <h2 className="text-xl font-bold mb-2">Quick Links</h2>
+          <h2 className="text-xl font-bold mb-2 mt-3">Quick Links</h2>
           <ul className="space-y-2 text-sm">
             <li><a href="/terms" className="hover:text-primary">Terms & Conditions</a></li>
             <li><a href="/privacy" className="hover:text-primary">Privacy Policy</a></li>
@@ -75,15 +75,15 @@ const Footer = () => {
             <li><a href="/about" className="hover:text-primary">About Us</a></li>
           </ul>
         </div>
-        <div className='flex flex-col justify-center items-center'>
-          <h2 className="text-xl font-bold mb-2">Routes</h2>
-          <ul className="   menu">
+        <div className='flex flex-col  items-center mt-5 md:mt-0'>
+          <h2 className="text-xl font-bold m-0 p-0">Routes</h2>
+          <ul className="menu">
             {links}
           </ul>
         </div>
 
         {/* Social Icons */}
-        <div>
+        <div className='mt-5  md:mt-0'>
           <h2 className="text-xl font-bold mb-2">Follow Us</h2>
           <div className="flex justify-center space-x-4 mt-2 text-2xl">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500"><FaFacebook /></a>
