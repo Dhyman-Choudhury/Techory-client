@@ -38,3 +38,29 @@ body {
   background: var(--newsletter-bg) !important;
   background-color: transparent !important; /* remove theme color layer */
 }
+
+/*  Night Theme Table Overrides */
+/* :root[data-theme="night"] table {
+  background-color: #0f172a !important;
+  color: #fcd34d !important;
+}
+
+:root[data-theme="night"] thead {
+  background-color: #1e293b !important;
+  color: #fcd34d !important;
+}
+
+:root[data-theme="night"] tbody tr {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+:root[data-theme="night"] tbody tr:hover {
+  background-color: #1e293b !important;
+}
+
+:root[data-theme="night"] td,
+:root[data-theme="night"] th {
+  border-color: #475569 !important;
+  color: #fcd34d !important;
+} */

@@ -17,6 +17,8 @@ import About from "../pages/quickLinks/About";
 import ContactUs from "../pages/quickLinks/ContactUs";
 import PrivacyPolicy from "../pages/quickLinks/PrivacyPolicy";
 import TermsAndConditions from "../pages/quickLinks/TermsAndConditions";
+import DashboardLayout from "../layouts/DashboardLayout";
+import AdminDashboardHome from "../pages/Dashboard/AdminDashboard/AdminDashboardHome";
 
 
 
@@ -103,6 +105,16 @@ export const router = createBrowserRouter([
       }
 
     ]
+  },
+  {
+    path: '/dashboard',
+    element:<DashboardLayout />,
+    
+    children: [
+      {
+        index: true,
+        element: <AdminDashboardHome></AdminDashboardHome>
+    }]
   },
   {
     path: '/auth',

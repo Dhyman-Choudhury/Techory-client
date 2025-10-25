@@ -12,6 +12,9 @@ const Navbar = () => {
   const handleNavigate = () => {
     navigate('/addBlog');
   };
+  const handleNavigateDashboard = () => {
+    navigate('/dashboard');
+  };
 
   const handleLogout = () => {
     logout()
@@ -58,6 +61,19 @@ const Navbar = () => {
         </NavLink>
       )}
     </li>,
+    <li key="dashboard">
+      {user && (
+        <button
+          onClick={handleNavigateDashboard}
+          className={`${location.pathname === '/dashboard' ? 'bg-[#60A5FA] text-white' : 'dark:text-base-100'
+            }`}
+        >
+          Dashboard
+        </button>
+      )}
+    </li>,
+    
+   
   ];
 
   return (

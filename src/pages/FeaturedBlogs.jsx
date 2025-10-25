@@ -7,19 +7,16 @@ import {
     getPaginationRowModel,
 } from '@tanstack/react-table';
 import { useLoaderData } from 'react-router';
-
-// ✅ Utility: Count words in a string
-const getWordCount = (text) => text?.trim().split(/\s+/).length || 0;
+import { getWordCount } from './utils';
 
 const FeaturedBlogs = () => {
     const data = useLoaderData();
     const [sorting, setSorting] = useState([]);
-    
-     useEffect(() => {
-        document.title = "Featured Blogs | techory";
-      }, []);
 
-    // ✅ Top 10 blogs based on word count
+    useEffect(() => {
+        document.title = "Featured Blogs | techory";
+    }, []);
+
     const topBlogs = useMemo(() => {
         return [...data]
             .filter(blog => blog.longDescription)
@@ -27,7 +24,6 @@ const FeaturedBlogs = () => {
             .slice(0, 10);
     }, [data]);
 
-    // ✅ Define columns for table
     const columns = [
         {
             header: 'Thumbnail',
@@ -46,16 +42,12 @@ const FeaturedBlogs = () => {
         {
             header: 'Short Description',
             accessorKey: 'shortDescription',
-            cell: info => (
-                <span className="line-clamp-2">{info.getValue()}</span>
-            ),
+            cell: info => <span className="line-clamp-2">{info.getValue()}</span>,
         },
         {
             header: 'Event Date',
             accessorKey: 'eventDate',
-            cell: info => (
-                <span>{new Date(info.getValue()).toLocaleDateString()}</span>
-            ),
+            cell: info => <span>{new Date(info.getValue()).toLocaleDateString()}</span>,
         },
         {
             header: 'Word Count',
@@ -77,16 +69,11 @@ const FeaturedBlogs = () => {
 
     return (
         <div className="p-8 bg-secondary rounded-xl px-3 md:px-10 lg:px-16 mb-10">
-            <h1 className="text-4xl font-bold mb-8 dark:text-base-100 text-center"> Featured Blogs</h1>
-            
+            <h1 className="text-4xl font-bold mb-8 text-center"> Featured Blogs</h1>
 
-            
-           
-
-            {/* ✅ Table */}
             <div className="overflow-x-auto border rounded shadow-sm">
-                <table className="min-w-full text-sm bg-[#0f172a] text-[#fcd34d]">
-                    <thead className=" text-[#fcd34d]">
+                <table className="min-w-full text-sm">
+                    <thead>
                         {table.getHeaderGroups().map(headerGroup => (
                             <tr key={headerGroup.id}>
                                 {headerGroup.headers.map(header => (
@@ -109,9 +96,9 @@ const FeaturedBlogs = () => {
                             </tr>
                         ))}
                     </thead>
-                    <tbody className="text-[#c7ab3e]">
+                    <tbody>
                         {table.getRowModel().rows.map(row => (
-                            <tr key={row.id} className="hover:bg-gray-50 hover:text-gray-800 border-t">
+                            <tr key={row.id} className="hover:bg-gray-50">
                                 {row.getVisibleCells().map(cell => (
                                     <td key={cell.id} className="px-4 py-3 border">
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -127,3 +114,4 @@ const FeaturedBlogs = () => {
 };
 
 export default FeaturedBlogs;
+2
