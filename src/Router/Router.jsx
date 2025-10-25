@@ -19,6 +19,7 @@ import PrivacyPolicy from "../pages/quickLinks/PrivacyPolicy";
 import TermsAndConditions from "../pages/quickLinks/TermsAndConditions";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AdminDashboardHome from "../pages/Dashboard/AdminDashboard/AdminDashboardHome";
+import AdminNewsletter from "../pages/Dashboard/AdminDashboard/AdminNewsletter";
 
 
 
@@ -114,7 +115,13 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <AdminDashboardHome></AdminDashboardHome>
-    }]
+    }, 
+    {
+        path: 'adminNewsletter',
+
+        element:<AdminNewsletter></AdminNewsletter>
+      },
+  ]
   },
   {
     path: '/auth',
