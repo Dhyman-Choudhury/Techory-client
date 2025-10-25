@@ -82,15 +82,15 @@ const WishList = () => {
                                 className="w-full object-cover rounded-xl h-[250px] shadow-2xl"
                             />
                             <div className="p-5 space-y-3">
-                                <h2 className="text-xl font-bold text-base-100 mb-1">{event.title}</h2>
-                                <p className="text-sm text-base-100">
-                                    <span className='font-semibold text-base-100'>Author :</span> {event.name}
+                                <h2 className="text-xl font-bold dark:text-base-100 mb-1">{event.title}</h2>
+                                <p className="text-sm dark:text-base-100">
+                                    <span className='font-semibold dark:text-base-100'>Author :</span> {event.name}
                                 </p>
-                                <p className="text-sm text-base-100">
-                                    <span className='font-semibold text-base-100'>Category :</span> {event.category}
+                                <p className="text-sm dark:text-base-100">
+                                    <span className='font-semibold dark:text-base-100'>Category :</span> {event.category}
                                 </p>
-                                <p className="text-sm text-base-100">
-                                    <span className='font-semibold text-base-100'>Short Description:</span> {event.shortDescription}
+                                <p className="text-sm dark:text-base-100">
+                                    <span className='font-semibold dark:text-base-100'>Short Description:</span> {event.shortDescription}
                                 </p>
                                 <div className='flex justify-between'>
                                     <Link to={`/blogDetails/${event.blogId}`}>

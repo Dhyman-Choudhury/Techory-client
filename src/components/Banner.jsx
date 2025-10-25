@@ -8,7 +8,7 @@ const Banner = () => {
   const [xValues, setXValues] = useState([100, 150, 100]);
 
   const fullText = "Revolutionizing AI Search!";
- const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [index, setIndex] = useState(0);
 
@@ -29,7 +29,7 @@ const Banner = () => {
     return () => window.removeEventListener('resize', updateXValues);
   }, []);
 
- // Typing animation effect
+  // Typing animation effect
   useEffect(() => {
     let timer;
 
@@ -90,32 +90,33 @@ const Banner = () => {
 
         <div className='flex-1 text-center flex flex-col justify-center items-center px-5'>
           <h1
-            className='text-4xl sm:text-5xl md:text-6xl font-bold text-base-100 font-mono min-h-[4.5rem]'
+            className='text-4xl sm:text-5xl md:text-6xl font-bold dark:text-base-100 font-mono min-h-[4.5rem]'
           >
             {displayText}
-             <span className='inline-block w-1 h-8 bg-white ml-1 animate-blink'></span>
+            <span className='inline-block w-1 h-8 bg-white ml-1 animate-blink'></span>
           </h1>
 
-          
-            
-              <motion.p
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className='text-lg text-gray-200 mt-4 max-w-sm'
-              >
-                The future of search is smarter and faster.
-              </motion.p>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className='mt-8 text-base-100 btn btn-outline hover:btn-primary transition-colors duration-500'
-              >
-                Get Started
-              </motion.button>
-          
-          
+
+          <motion.p
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className='text-lg text-gray-200 mt-4 max-w-sm'
+          >
+            The future of search is smarter and faster.
+          </motion.p>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className='mt-8 dark:text-base-100 btn btn-outline dark:btn-outline hover:btn-primary transition-colors duration-500'
+          >
+            <a href="/allBlogs">All Blogs</a>
+          </motion.button>
+
+
+
         </div>
       </div>
 

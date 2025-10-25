@@ -70,8 +70,8 @@ const popularPosts = [
 
 const PopularPosts = () => {
   return (
-    <section className="py-10 px-4 md:px-16 w-full rounded-xl mb-10 bg-secondary">
-      <h2 className="text-4xl font-bold mb-8 text-base-100 text-center tracking-wide">
+    <section className="py-10 px-4 md:px-16 w-full rounded-xl mb-10 bg-secondary ">
+      <h2 className="text-4xl font-bold mb-8 dark:text-base-100 text-center tracking-wide">
          Trending Now
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -95,10 +95,11 @@ const PopularPosts = () => {
               />
             </div>
             <div className="p-5">
-              <h3 className="text-lg font-semibold text-base-100 group-hover:text-green-700 transition-colors duration-300">
+              <h3 className="text-lg font-semibold dark:text-base-100 group-hover:text-green-700 transition-colors duration-300">
                 {post.title}
               </h3>
-              <div className="text-sm text-base-100 group-hover:text-green-700 mt-3 flex justify-between items-center">
+              
+              <div className="text-sm dark:text-base-100 group-hover:text-green-700 mt-3 flex justify-between items-center">
                 <span>👁 {post.views.toLocaleString()} views</span>
                 <span>⏱ {post.readTime}</span>
               </div>

@@ -13,17 +13,17 @@ const Footer = () => {
   }
    const links = [
     <li key="home">
-      <NavLink className="text-bold text-base-100" to="/">
+      <NavLink className="text-bold dark:text-base-100" to="/">
         Home
       </NavLink>
     </li>,
     <li key="featured">
-      <NavLink className="text-bold text-base-100" to="/featuredBlog">
+      <NavLink className="text-bold dark:text-base-100" to="/featuredBlog">
         Featured Blogs
       </NavLink>
     </li>,
     <li key="all">
-      <NavLink className="text-bold text-base-100" to="/allBlogs">
+      <NavLink className="text-bold dark:text-base-100" to="/allBlogs">
         All Blogs
       </NavLink>
     </li>,
@@ -32,7 +32,7 @@ const Footer = () => {
         <button
           onClick={handleNavigate}
           className={`${
-            location.pathname === '/addBlog' ? 'bg-[#60A5FA] text-white' : 'text-base-100'
+            location.pathname === '/addBlog' ? 'bg-[#60A5FA] text-white' : 'dark:text-base-100'
           }`}
         >
           Add Blog
@@ -41,7 +41,7 @@ const Footer = () => {
     </li>,
     <li key="wishlist">
       {user && (
-        <NavLink className="text-bold text-base-100" to={`/wishList/${user?.email}`}>
+        <NavLink className="text-bold dark:text-base-100" to={`/wishList/${user?.email}`}>
           Wishlist
         </NavLink>
       )}

@@ -77,7 +77,7 @@ const FeaturedBlogs = () => {
 
     return (
         <div className="p-8 bg-secondary rounded-xl px-3 md:px-10 lg:px-16 mb-10">
-            <h1 className="text-4xl font-bold mb-8 text-base-100 text-center"> Featured Blogs</h1>
+            <h1 className="text-4xl font-bold mb-8 dark:text-base-100 text-center"> Featured Blogs</h1>
             
 
             

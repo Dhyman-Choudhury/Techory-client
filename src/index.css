@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+ @plugin "daisyui" {
+   themes: light --default, dark --prefersdark, cupcake, aqua, cyberpunk, synthwave, abyss, retro;
+ }
+
+:root[data-theme="night"] {
+  --common-text-color: #d1d5db !important;  /* gray-300 */
+}
+
+/* Apply to all text */
+body {
+  color: var(--common-text-color);
+}
 
 :root {
   --color-primary: #086d65;
@@ -9,4 +21,20 @@
 .active{
   background-color:#60A5FA  ; 
   color: white ; 
+}
+
+
+
+:root {
+  --newsletter-bg: linear-gradient(to right, #234652, #3c325d); /* Light mode gradient */
+}
+
+:root[data-theme="night"] {
+  --newsletter-bg: linear-gradient(to right, #15303b, #221a36); /* Dark mode gradient */
+}
+
+:root[data-theme="night"] .newsletter-section,
+:root .newsletter-section {
+  background: var(--newsletter-bg) !important;
+  background-color: transparent !important; /* remove theme color layer */
 }
